@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+	<title>リソースファイルの同梱</title>
+    
+	<link rel="stylesheet" href="../assets/css/page.css" type="text/css" />
+</head>
+<body>
+<h1 id="nav-5-1">リソースファイルの同梱</h1>
+
+<p>書籍のコンテンツに使用するスタイルシートや画像等は、
+src/assets ディレクトリにファイルを保存しておく事でデータに同梱されます。</p>
+
+<pre><code>src/
+├ assets/ ... リソースファイルを保存
+├ data/
+└ publish.json</code></pre>
+
+<p>assets ディレクトリに保存されたファイルはサブディレクトリも含めて全て複製されて EPUB ファイルに同梱され、
+ルートファイル（content.opf）のエントリに追加されます。</p>
+
+<p>ただし、表紙画像とスタイルシートは少し別の扱いになります。</p>
+
+<h2 id="nav-5-2">表紙画像の設定</h2>
+
+<p>表紙画像は <a href="03.xhtml">ドキュメント設定</a> で説明したように、
+publish.json の assets セクションで画像のパスを定義しておく必要があります。</p>
+
+<pre><code>{
+    &quot;meta&quot;: {...},
+    &quot;assets&quot;: {
+        &quot;coverImage&quot;: &quot;assets/img/cover.jpg&quot;,
+        ...
+    },
+    &quot;data&quot;: {...}
+}</code></pre>
+
+<h2 id="nav-5-3">スタイルシートの設定</h2>
+
+<p>表紙画像と同様に、スタイルシートも assets セクションでパスを定義します。
+common, cover, nav, page と4種類のスタイルシートがあり、
+それぞれ該当するドキュメントに &lt;link&gt; 要素で埋め込まれます。</p>
+
+<ul><li>commonStyle ... 表紙・ナビゲーション・コンテンツドキュメントの共通スタイル</li><li>coverStyle ... 表紙ページドキュメント用スタイル</li><li>navStyle ... ナビゲーションドキュメント（視覚目次）用スタイル</li><li>pageStyle ... コンテンツドキュメント用スタイル</li></ul>
+
+<p>publish.json で定義されていないスタイルシート、
+あるいは null として設定されているスタイルシートはドキュメントに埋め込まれない事に注意してください。</p>
+
+<pre><code>{
+    &quot;assets&quot;: {
+        &quot;commonStyle&quot;: null,
+        &quot;navStyle&quot;: &quot;assets/css/nav.css&quot;,
+        &quot;pageStyle&quot;: &quot;assets/css/page.css&quot;,
+        &quot;coverStyle&quot;: &quot;assets/css/cover.css&quot;,
+        &quot;coverImage&quot;: &quot;assets/img/cover.jpg&quot;
+    },
+}</code></pre>
+
+<p>このようにした場合、全てのコンテンツドキュメントに埋め込まれるべき common スタイルシートは &lt;link&gt; 要素として追加されません。</p>
+</body>
+</html>

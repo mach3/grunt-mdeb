@@ -1,0 +1,32 @@
+{
+  "name": "grunt-mdeb",
+  "version": "0.1.0",
+  "dependencies": {
+    "grunt": "~0.4.2",
+    "cheerio": "~0.13.0",
+    "js-beautify": "~1.4.2",
+    "underscore": "~1.5.2",
+    "markdown": "~0.5.0"
+  },
+  "description": "Grunt task to publish markdown docs as EPUB 3.0 book.",
+  "main": "tasks/mdeb.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mach3/grunt-mdeb.git"
+  },
+  "keywords": [
+    "grunt",
+    "task",
+    "markdown",
+    "epub"
+  ],
+  "author": "mach3",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mach3/grunt-mdeb/issues"
+  }
+}

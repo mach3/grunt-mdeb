@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+	<title>オプション</title>
+    
+	<link rel="stylesheet" href="../assets/css/page.css" type="text/css" />
+</head>
+<body>
+<h1 id="nav-6-1">オプション</h1>
+
+<p>Grunt タスクに options を設定する事でパスやタスクの挙動などを調整する事が出来ます。</p>
+
+<pre><code>grunt.initConfig({
+    epublish: {
+        dist: {
+            options: {
+                validate: true,
+                validateCommand: &quot;epubcheck %s&quot;
+            },
+            dest: &quot;dest&quot;,
+            src: &quot;src&quot;
+        }
+    }
+});</code></pre>
+
+<ul><li><strong>tempPath</strong> :String (&quot;tmp&quot;)<br />ビルド時にパッケージを展開する一時ディレクトリ名</li><li><strong>contentPath</strong> :String (&quot;OEBPS&quot;)<br />パッケージ内容を格納するディレクトリ名</li><li><strong>dataPath</strong> :String (&quot;data&quot;)<br />コンテンツドキュメントを格納するディレクトリ名</li><li><strong>assetsPath</strong> :String (&quot;assets&quot;)<br />リソースファイルを格納するディレクトリ名</li><li><strong>validate</strong> :Boolean (false)<br />バリデーションの実行の有無（validateCommand 必須）</li><li><strong>validateCommand</strong> :String (null)<br />バリデーション用コマンド<br />ex) &quot;java -jar ~/opt/epubcheck/epubcheck-3.0.1.jar %s&quot;</li><li><strong>verbose</strong> :Boolean (true)<br />ログの出力の有無</li></ul>
+</body>
+</html>

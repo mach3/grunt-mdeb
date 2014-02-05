@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+	<title>基本的な使い方</title>
+    
+	<link rel="stylesheet" href="../assets/css/page.css" type="text/css" />
+</head>
+<body>
+<h1 id="nav-2-1">基本的な使い方</h1>
+
+<p>Grunt タスクの扱い方は理解されている物として、
+grunt-mdeb の使用方法を簡単に紹介します。</p>
+
+<h2 id="nav-2-2">インストール</h2>
+
+<p>まず grunt-mdeb を npm からインストールします。</p>
+
+<pre><code>$ npm install grunt-mdeb</code></pre>
+
+<h2 id="nav-2-3">タスクの設定</h2>
+
+<p>Gruntfile.js でタスクの設定を記述します。
+タスクのデータには <strong>dest</strong> と <strong>src</strong> が必須です。
+また、options で任意のオプションを渡して実行出来ます。</p>
+
+<pre><code>loadNpmTasks(&quot;grunt-epublish&quot;);
+grunt.initConfig({
+    epublish: {
+        dist: {
+            options: {},
+            src: &quot;src&quot;,
+            dest: &quot;dest&quot;
+        }
+    }
+});</code></pre>
+
+<ul><li><strong>src</strong> : 元データを格納するディレクトリ</li><li><strong>dest</strong> : EPUB データの書き出し先ディレクトリ</li><li><strong>options</strong> : 任意のオプション（後述）</li></ul>
+
+<h2 id="nav-2-4">データの構成</h2>
+
+<p>データのディレクトリ構成は次のようにします。
+（各ディレクトリの名前はオプションで変更可能です）</p>
+
+<pre><code>src/
+├ assets/
+├ data/
+│ ├ cover.md
+│ ├ 01.md
+│ ├ 02.md
+│ └ ...
+└ publish.json</code></pre>
+
+<ul><li><strong>assets</strong> : 画像やCSSなどのリソースを格納するディレクトリ</li><li><strong>data</strong> : コンテンツドキュメント（Markdown）を格納するディレクトリ</li><li><strong>publish.json</strong> : 設定ファイル</li></ul>
+
+<p>タイトルや執筆者、ドキュメントのエントリ等の全てのデータは、
+publish.json として記述しておきます。（<a href="02.xhtml">publish.jsonについて</a>）</p>
+
+<pre><code>{
+    &quot;name&quot;: &quot;sample&quot;,
+    &quot;title&quot;: &quot;My Sample Document&quot;,
+    ...
+}</code></pre>
+
+<h2 id="nav-2-5">ビルド</h2>
+
+<p>mdeb タスクを走らせてビルドを行います。</p>
+
+<pre><code>$ grunt mdeb</code></pre>
+
+<p>タスクとドキュメントに問題がなければ dest に設定されたディレクトリに EPUB ファイルが出力されます。
+各種リーダー・ビューアで内容を確認しましょう。
+また、EPUB ファイルとして圧縮される前のドキュメントは tmp ディレクトリに保存されています。</p>
+
+<pre><code>dest/
+├ tmp/
+│ ├ META-INF/
+│ ├ OEBPS/
+│ └ mimetype
+├ sample.epub
+└ rebuild</code></pre>
+
+<h2 id="nav-2-6">再ビルド</h2>
+
+<p>tmp に保存されたXHTMLを編集し、それを元に再度ビルドを行いたい場合は
+一緒に出力された <strong>rebuild</strong> を実行します。</p>
+
+<pre><code>$ cd dest
+$ ./rebuild</code></pre>
+
+<p>ただし、再度 Markdown を編集して Grunt でビルドを行った場合は tmp の中のファイルも上書きされる為、
+編集された内容も破棄されます。</p>
+</body>
+</html>

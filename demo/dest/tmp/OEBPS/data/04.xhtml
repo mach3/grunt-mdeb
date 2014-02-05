@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+	<title>コンテンツドキュメントの制作</title>
+    
+	<link rel="stylesheet" href="../assets/css/page.css" type="text/css" />
+</head>
+<body>
+<h1 id="nav-4-1">コンテンツドキュメントの制作</h1>
+
+<p>コンテンツドキュメントは <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> で記述した物を元に
+XHTML として出力し、それを纏めた物が epub 書籍になります。</p>
+
+<pre><code># grunt-mdeb について
+
+**grunt-mdeb** は EPUB 3.0 で電子書籍を制作する為の Grunt タスクです。
+（名前は MarkDown to EBook の頭文字です）</code></pre>
+
+<h2 id="nav-4-2">コンテンツドキュメントの生成</h2>
+
+<p>publish.json の items に列挙された Markdown ファイルは順に XHTML にパースされ、
+同名の XHTML ファイルとして出力されます。
+また、items に登録された一番初めのドキュメントは「表紙ページ」として扱われ、
+後述のナビゲーションからは除外されます。</p>
+
+<h2 id="nav-4-3">ナビゲーションドキュメントの生成</h2>
+
+<p>EPUBデータには論理目次と視覚目次の２つのナビゲーションドキュメントがありますが、
+grunt-mdeb はコンテンツドキュメントの内容からそれらを自動的に生成します。</p>
+
+<ul><li>論理目次 ... ビューアの章移動などで使用されるインデックス</li><li>視覚目次 ... ページとして表示される目次</li></ul>
+
+<p>mdeb タスクは、コンテンツドキュメントを生成するプロセス中に見出し要素（h1-h5）を抽出し、インデックスの生成を行います。
+抽出されたインデックスはナビゲーションドキュメント（nav.xhtml, toc.ncx）として出力され、
+視覚目次（nav.xhtml）は表紙ページの次のページとして挿入されます。</p>
+
+<pre><code># FOOBAR
+## Foo
+### foo
+### bar
+### baz
+## Bar
+### qux
+### quux
+## Baz</code></pre>
+
+<p>この Markdown は次のようなインデックスを生成します。</p>
+
+<pre><code>FOOBAR
+├ Foo
+│ ├ foo
+│ ├ bar
+│ └ baz
+├ Bar
+│ ├ qux
+│ └ quux
+└ Baz</code></pre>
+
+<p>尚、見出しレベルは正確に指定する必要があります。
+h1 の後に h2 を経ずに h3 の見出しを使用したりすると、インデックスの生成は正常に行われません。</p>
+
+<h2 id="nav-4-4">HTMLの挿入</h2>
+
+<p>Markdown ドキュメント内に記述されたHTMLは基本的にエスケープされて出力されます。
+HTML をそのまま出力する場合は {{html}} で囲う事で Markdown によるエスケープを回避する事が出来ます。</p>
+
+
+<pre><code>&#123;&#123;html&#125;&#125;
+&lt;div style="border:1px solid #ccc"&gt;
+    this is html
+&lt;/div&gt;
+&#123;&#123;/html&#125;&#125;</code></pre>
+
+</body>
+</html>

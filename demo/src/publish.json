@@ -1,0 +1,28 @@
+{
+	"meta": {
+		"name": "document",
+		"title": "grunt-mdebの使い方",
+		"author": "mach3",
+		"publisher": "matsukaze.",
+		"description": "grunt タスク 'grunt-mdeb' で電子書籍を制作する手引。",
+		"modified": null,
+		"language": "ja",
+		"identifier": "http://github.com/mach3/grunt-mdeb/demo/document",
+		"navTitle": "目次"
+	},
+	"assets": {
+		"navStyle": "assets/css/nav.css",
+		"pageStyle": "assets/css/page.css",
+		"coverStyle": "assets/css/cover.css",
+		"coverImage": "assets/img/cover.jpg"
+	},
+	"items": [
+		"data/cover.md",
+		"data/01.md",
+		"data/02.md",
+		"data/03.md",
+		"data/04.md",
+		"data/05.md",
+		"data/06.md"
+	]
+}

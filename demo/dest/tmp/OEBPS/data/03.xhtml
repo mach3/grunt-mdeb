@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+	<title>ドキュメント設定（publish.json）</title>
+    
+	<link rel="stylesheet" href="../assets/css/page.css" type="text/css" />
+</head>
+<body>
+<h1 id="nav-3-1">ドキュメント設定（publish.json）</h1>
+
+<p>publish.json は書籍のデータを定義する為の最も重要なファイルです。
+データは meta / assets / items の3セクションでそれぞれ必要な項目を設定します。</p>
+
+<h2 id="nav-3-2">meta セクション</h2>
+
+<p>書籍のメタ情報を格納します。初期値をもつ項目は省略する事ができます。</p>
+
+<ul><li><strong>name</strong> :String (&quot;document&quot;)<br />出力するEPUBのファイル名</li><li><strong>title</strong> :String (&quot;&quot;)<br />書籍のタイトル</li><li><strong>author</strong> :String (&quot;&quot;)<br />書籍の執筆者</li><li><strong>publisher</strong> :String (&quot;&quot;)<br />出版会社等</li><li><strong>description</strong> :String (&quot;&quot;)<br />書籍の紹介文等</li><li><strong>modified</strong> :String (null)<br />最終更新日（Date() で解釈できる文字列であること）<br /><code>null</code> の場合はビルド時の日時となる</li><li><strong>language</strong> :String (&quot;en&quot;)<br />書籍の言語</li><li><strong>identifier</strong> :String (&quot;&quot;)<br />書籍のユニークID（URLやuuid等）</li><li><strong>navTitle</strong> :String (&quot;Table of Contents&quot;)<br />目次ページのタイトル</li><li><strong>direction</strong> :String (&quot;default&quot;)<br />ページ組方向（default | ltr | rtl）</li><li><strong>layout</strong> :String (&quot;reflowable&quot;)<br />ページレイアウト（reflowable | pre-pagenated）</li><li><strong>orientation</strong> :String (&quot;auto&quot;)<br />文書が適したデバイスの向き（auto | portrait | landscape）</li><li><strong>spread</strong> :String (&quot;auto&quot;)<br />見開き表示の可否（auto | none | portrait | landscape | both）</li></ul>
+
+<h2 id="nav-3-3">assets セクション</h2>
+
+<p>CSSや画像などのリソースの情報を格納します。</p>
+
+<ul><li><strong>commonStyle</strong> :String (null)<br />表紙・目次を含む全てのドキュメントに使用されるスタイルシートのパス</li><li><strong>navStyle</strong> :String (null)<br />表紙に使用されるスタイルシートのパス</li><li><strong>pageStyle</strong> :String (null)<br />コンテンツドキュメントに使用されるスタイルシートのパス</li><li><strong>coverStyle</strong> :String (null)<br />表紙ページに使用されるスタイルシートのパス</li><li><strong>coverImage</strong> :String (null)<br />表紙画像のパス</li></ul>
+
+<h2 id="nav-3-4">items セクション</h2>
+
+<p>書籍のコンテンツドキュメントの元となる markdown ファイルを配列で順に列挙します。
+一番先頭のドキュメントは表紙ページとして扱われます。
+また、自動生成されるインデックスドキュメントは表紙の次に挿入されます。</p>
+
+<pre><code>&quot;items&quot;: {
+    &quot;data/cover.md&quot;,
+    &quot;data/01.md&quot;,
+    &quot;data/02.md&quot;,
+    ...
+}</code></pre>
+
+<p>アイテム毎にページのレイアウトを変更したい場合は、
+&quot;ファイル名@プロパティ&quot; のように指定する事が出来ます。
+複数のプロパティを指定したい場合はスペース区切りで入力します。</p>
+
+<pre><code>&quot;items&quot;: {
+    &quot;data/cover.md&quot;,
+    &quot;data/01.md@page-spread-center&quot;,
+    &quot;data/02.md@page-spread-left rendition:layout-pre-pagenated&quot;,
+    ...
+}</code></pre>
+
+<h2 id="nav-3-5">サンプル</h2>
+
+<pre><code>{
+    &quot;meta&quot;: {
+        &quot;name&quot;: &quot;sample&quot;,
+        &quot;title&quot;: &quot;My Sample Book&quot;,
+        &quot;author&quot;: &quot;マツカゼ タロウ&quot;,
+        &quot;publisher&quot;: &quot;matsukaze.&quot;,
+        &quot;description&quot;: &quot;サンプルの電子書籍です。&quot;,
+        &quot;language&quot;: &quot;ja&quot;,
+        &quot;identifier&quot;: &quot;http://example.com/book/sample&quot;,
+        &quot;navTitle&quot;: &quot;目次&quot;
+    },
+    &quot;assets&quot;: {
+        &quot;commonStyle&quot;: &quot;assets/css/common.css&quot;,
+        &quot;navStyle&quot;: &quot;assets/css/nav.css&quot;,
+        &quot;pageStyle&quot;: &quot;assets/css/page.css&quot;,
+        &quot;coverStyle&quot;: &quot;assets/css/cover.css&quot;,
+        &quot;coverImage&quot;: &quot;assets/img/cover.jpg&quot;
+    },
+    &quot;items&quot;: [
+        &quot;data/cover.md&quot;,
+        &quot;data/01.md&quot;,
+        &quot;data/02.md&quot;,
+        ...
+    ]
+}</code></pre>
+</body>
+</html>

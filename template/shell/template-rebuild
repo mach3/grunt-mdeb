@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# ----------------------
+# Re-build EPUB document
+# ----------------------
+
+build=$(dirname $0)
+name=<%=data.meta.name %>
+tmp=<%=tempPath %>
+validate=<%=(validate && validateCommand) ? 1 : 0 %>
+
+function label {
+    echo "--------------------------------"
+    echo $1
+    echo
+}
+
+# ----------------------
+
+label "Build EPUB document"
+
+cd ${build}
+if [ -e ${name}.epub ] ; then
+    rm ${name}.epub;
+fi
+if [ -d ${tmp} ] ; then
+    cd tmp
+    zip -0 -X ../${name}.epub ./mimetype
+    zip -r ../${name}.epub ./ -x mimetype
+    cd ../
+else 
+    echo ERROR: No temporary directory "'"${tmp}"'"
+    exit 1;
+fi
+
+label "EPUB document successfully saved as '${name}.epub'"
+
+# ----------------------
+
+label "Validate EPUB document"
+
+if [ ${validate} -eq 1 ] ; then
+    <%=(validateCommand ? validateCommand : "").replace("%s", "${name}.epub") %>
+    echo
+fi
+
+# ----------------------
+
+label "Done."
+exit 0;

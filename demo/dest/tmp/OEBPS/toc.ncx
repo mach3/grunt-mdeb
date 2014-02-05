@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ncx xmlns="http://www.daisy.org/z3986/2005/ncx/" version="2005-1">
+
+    <head>
+        <meta name="dtb:uid" content="http://github.com/mach3/grunt-mdeb/demo/document" />
+        <meta name="dtb:depth" content="2" />
+    </head>
+    <docTitle>
+        <text>grunt-mdebの使い方</text>
+    </docTitle>
+    <navMap>
+        <navPoint id="navPoint-1" playOrder="1">
+            <navLabel>
+                <text>はじめに</text>
+            </navLabel>
+            <content src="data/01.xhtml#nav-1-1"></content>
+            <navPoint id="navPoint-2" playOrder="2">
+                <navLabel>
+                    <text>grunt-mdeb とは</text>
+                </navLabel>
+                <content src="data/01.xhtml#nav-1-2"></content>
+            </navPoint>
+            <navPoint id="navPoint-3" playOrder="3">
+                <navLabel>
+                    <text>主な機能</text>
+                </navLabel>
+                <content src="data/01.xhtml#nav-1-3"></content>
+            </navPoint>
+            <navPoint id="navPoint-4" playOrder="4">
+                <navLabel>
+                    <text>対応環境</text>
+                </navLabel>
+                <content src="data/01.xhtml#nav-1-4"></content>
+            </navPoint>
+            <navPoint id="navPoint-5" playOrder="5">
+                <navLabel>
+                    <text>ライセンス</text>
+                </navLabel>
+                <content src="data/01.xhtml#nav-1-5"></content>
+            </navPoint>
+            <navPoint id="navPoint-6" playOrder="6">
+                <navLabel>
+                    <text>リポジトリ</text>
+                </navLabel>
+                <content src="data/01.xhtml#nav-1-6"></content>
+            </navPoint>
+        </navPoint>
+        <navPoint id="navPoint-7" playOrder="7">
+            <navLabel>
+                <text>基本的な使い方</text>
+            </navLabel>
+            <content src="data/02.xhtml#nav-2-1"></content>
+            <navPoint id="navPoint-8" playOrder="8">
+                <navLabel>
+                    <text>インストール</text>
+                </navLabel>
+                <content src="data/02.xhtml#nav-2-2"></content>
+            </navPoint>
+            <navPoint id="navPoint-9" playOrder="9">
+                <navLabel>
+                    <text>タスクの設定</text>
+                </navLabel>
+                <content src="data/02.xhtml#nav-2-3"></content>
+            </navPoint>
+            <navPoint id="navPoint-10" playOrder="10">
+                <navLabel>
+                    <text>データの構成</text>
+                </navLabel>
+                <content src="data/02.xhtml#nav-2-4"></content>
+            </navPoint>
+            <navPoint id="navPoint-11" playOrder="11">
+                <navLabel>
+                    <text>ビルド</text>
+                </navLabel>
+                <content src="data/02.xhtml#nav-2-5"></content>
+            </navPoint>
+            <navPoint id="navPoint-12" playOrder="12">
+                <navLabel>
+                    <text>再ビルド</text>
+                </navLabel>
+                <content src="data/02.xhtml#nav-2-6"></content>
+            </navPoint>
+        </navPoint>
+        <navPoint id="navPoint-13" playOrder="13">
+            <navLabel>
+                <text>ドキュメント設定（publish.json）</text>
+            </navLabel>
+            <content src="data/03.xhtml#nav-3-1"></content>
+            <navPoint id="navPoint-14" playOrder="14">
+                <navLabel>
+                    <text>meta セクション</text>
+                </navLabel>
+                <content src="data/03.xhtml#nav-3-2"></content>
+            </navPoint>
+            <navPoint id="navPoint-15" playOrder="15">
+                <navLabel>
+                    <text>assets セクション</text>
+                </navLabel>
+                <content src="data/03.xhtml#nav-3-3"></content>
+            </navPoint>
+            <navPoint id="navPoint-16" playOrder="16">
+                <navLabel>
+                    <text>items セクション</text>
+                </navLabel>
+                <content src="data/03.xhtml#nav-3-4"></content>
+            </navPoint>
+            <navPoint id="navPoint-17" playOrder="17">
+                <navLabel>
+                    <text>サンプル</text>
+                </navLabel>
+                <content src="data/03.xhtml#nav-3-5"></content>
+            </navPoint>
+        </navPoint>
+        <navPoint id="navPoint-18" playOrder="18">
+            <navLabel>
+                <text>コンテンツドキュメントの制作</text>
+            </navLabel>
+            <content src="data/04.xhtml#nav-4-1"></content>
+            <navPoint id="navPoint-19" playOrder="19">
+                <navLabel>
+                    <text>コンテンツドキュメントの生成</text>
+                </navLabel>
+                <content src="data/04.xhtml#nav-4-2"></content>
+            </navPoint>
+            <navPoint id="navPoint-20" playOrder="20">
+                <navLabel>
+                    <text>ナビゲーションドキュメントの生成</text>
+                </navLabel>
+                <content src="data/04.xhtml#nav-4-3"></content>
+            </navPoint>
+            <navPoint id="navPoint-21" playOrder="21">
+                <navLabel>
+                    <text>HTMLの挿入</text>
+                </navLabel>
+                <content src="data/04.xhtml#nav-4-4"></content>
+            </navPoint>
+        </navPoint>
+        <navPoint id="navPoint-22" playOrder="22">
+            <navLabel>
+                <text>リソースファイルの同梱</text>
+            </navLabel>
+            <content src="data/05.xhtml#nav-5-1"></content>
+            <navPoint id="navPoint-23" playOrder="23">
+                <navLabel>
+                    <text>表紙画像の設定</text>
+                </navLabel>
+                <content src="data/05.xhtml#nav-5-2"></content>
+            </navPoint>
+            <navPoint id="navPoint-24" playOrder="24">
+                <navLabel>
+                    <text>スタイルシートの設定</text>
+                </navLabel>
+                <content src="data/05.xhtml#nav-5-3"></content>
+            </navPoint>
+        </navPoint>
+        <navPoint id="navPoint-25" playOrder="25">
+            <navLabel>
+                <text>オプション</text>
+            </navLabel>
+            <content src="data/06.xhtml#nav-6-1"></content>
+        </navPoint>
+    </navMap>
+</ncx>

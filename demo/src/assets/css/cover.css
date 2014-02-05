@@ -1,0 +1,11 @@
+body {
+    margin: 0;
+}
+p {
+    margin: 0;
+}
+img {
+    width: auto;
+    height: 100%;
+    margin: 0 auto;
+}

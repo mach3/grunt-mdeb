@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<package xmlns="http://www.idpf.org/2007/opf" unique-identifier="BookID" version="3.0" xml:lang="<%=language %>" prefix="rendition: http://www.idpf.org/vocab/rendition/#">
+	<metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+		<dc:title><%=title %></dc:title>
+		<dc:creator><%=author %></dc:creator>
+		<dc:publisher><%=publisher %></dc:publisher>
+		<dc:description><%=description %></dc:description>
+		<meta property="dcterms:modified"><%=modified %></meta>
+		<dc:language><%=language %></dc:language>
+		<dc:identifier id="BookID"><%=identifier %></dc:identifier>
+		<% if(layout){ %><meta property="rendition:layout"><%=layout %></meta><% } %>
+		<% if(orientation){ %><meta property="rendition:orientation"><%=orientation %></meta><% }%>
+		<% if(spread){ %><meta property="rendition:spread"><%=spread %></meta><% } %>
+	</metadata>
+	<manifest>
+		<% 
+			var ids = [];
+			manifest.forEach(function(data){ 
+				if(ids.indexOf(data.id) >= 0){ return; }
+				ids.push(data.id);
+		%>
+		<item<% if(data.prop){ %> properties="<%=data.prop %>"<% } %> id="<%=data.id %>" href="<%=data.href %>" media-type="<%=data.type %>" />
+		<% }) %>
+	</manifest>
+	<spine toc="ncx" <% if(direction){ %>page-progression-direction="<%=direction %>"<% } %>>
+		<% spine.forEach(function(data){ %>
+		<itemref idref="<%=data.id %>" <% if(data.props){ %>properties="<%=data.props %>"<% } %> linear="<%=(data.linear)?'yes':'no' %>" />
+		<% }) %>
+	</spine>
+	<guide>
+		<% guide.forEach(function(data){ %>
+			<reference type="<%=data.type %>" title="<%=data.title %>" href="<%=data.href %>" />
+		<% }) %>
+	</guide>
+</package>
